@@ -32,7 +32,7 @@ def computation_model(a,b,x_train):
 
     return f_wb
 w = 100
-b = 100
+b = 500
 
 out_func = computation_model(w,b,x)
 
