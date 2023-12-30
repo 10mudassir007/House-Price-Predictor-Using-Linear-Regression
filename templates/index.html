@@ -1,0 +1,119 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #fff;
+        }
+
+        .login {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #2b2323;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+            font-family:'Pacifico', cursive; ;
+            font-weight: bold
+            
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin-top: 22px;
+            font-size: 20px;
+            color: #fff;
+            font-family: 'Pacifico', cursive;
+            font-weight: bold;
+        }
+        label[for="rooms"] {
+            color: #fff;
+            font-family:'Pacifico', cursive;
+            font-weight: bold; /* Change this to the desired color value */
+        }
+        label[for="house_size"] {
+            color: #fff;
+            font-family: 'Pacifico', cursive;
+            font-weight: bold; /* Change this to the desired color value */
+        }
+        label[for="floors"] {
+            color: #fff;
+            font-family: 'Pacifico', cursive;
+            font-weight: bold; /* Change this to the desired color value */
+        }
+        label[for="condition"] {
+            color: #fff;
+            font-family: 'Pacifico', cursive;
+            font-weight: bold; /* Change this to the desired color value */
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>House Price Predictor</h1>
+    
+    <form action="/predict" method="post">
+        <label for="house_size">Enter size of house in square feet:</label>
+        <input type="text" name="house_size" id="house_size" required>
+
+        <label for="rooms">Enter rooms in house:</label>
+        <input type="text" name="rooms" id="rooms" required>
+
+        <label for="floors">Enter floors in house:</label>
+        <input type="text" name="floors" id="floors" required>
+
+        <label for="condition">Enter condition of a house out of 10:</label>
+        <input type="text" name="condition" id="condition" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <p>{{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
